@@ -7,38 +7,36 @@ public class Attack : MonoBehaviour
 	public float dmgValue = 4;
 	public GameObject throwableObject;
 	public Transform attackCheck;
-	private Rigidbody2D m_Rigidbody2D;
+	private Rigidbody2D rb2d;
 	public Animator animator;
 	public bool canAttack = true;
 	public bool isTimeToCheck = false;
+	private PlayerInput input;
+
 
 	private void Awake()
 	{
-		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		rb2d = GetComponent<Rigidbody2D>();
+		input = GetComponent<PlayerInput>();
 	}
-
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.X) && canAttack)
+		if (input.meleeAttackInput && canAttack)
 		{
 			canAttack = false;
 			animator.SetBool("IsAttacking", true);
 			StartCoroutine(AttackCooldown());
 		}
 
-		if (Input.GetKeyDown(KeyCode.V))
+		if (input.rangeAttackInput)
 		{
 			GameObject throwableWeapon = Instantiate(throwableObject, transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f), Quaternion.identity) as GameObject; 
 			Vector2 direction = new Vector2(transform.localScale.x, 0);
 			throwableWeapon.GetComponent<ThrowableWeapon>().direction = direction; 
 			throwableWeapon.name = "ThrowableWeapon";
+			throwableWeapon.SendMessage("StartMovement");
 		}
 	}
 

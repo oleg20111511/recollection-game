@@ -8,27 +8,19 @@ public class ThrowableWeapon : MonoBehaviour
 	public bool hasHit = false;
 	public float speed = 10f;
 
-    // Start is called before the first frame update
-    void Start()
+    void StartMovement()
     {
-        
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-		if ( !hasHit)
 		GetComponent<Rigidbody2D>().velocity = direction * speed;
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "Enemy")
+		if (collision.gameObject.CompareTag("Enemy"))
 		{
 			collision.gameObject.SendMessage("ApplyDamage", Mathf.Sign(direction.x) * 2f);
 			Destroy(gameObject);
 		}
-		else if (collision.gameObject.tag != "Player")
+		else if (!collision.gameObject.CompareTag("Player"))
 		{
 			Destroy(gameObject);
 		}

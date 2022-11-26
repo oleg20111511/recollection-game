@@ -4,79 +4,93 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
 	public float life = 10;
-	private bool isPlat;
-	private bool isObstacle;
-	private Transform fallCheck;
-	private Transform wallCheck;
-	public LayerMask turnLayerMask;
-	private Rigidbody2D rb;
+	public float speed = 3f;
+	public Transform fallCheck;
+	public Transform wallCheck;
+	public LayerMask obstaclesMask;
+	public LayerMask groundMask;
 
-	private bool facingRight = true;
+	private Rigidbody2D rb2d;
+	private Animator animator;
+
+	private bool isFacingRight = false;
+	private bool isInvincible = false;
 	
-	public float speed = 5f;
 
-	public bool isInvincible = false;
-	private bool isHitted = false;
-
-	void Awake () {
-		fallCheck = transform.Find("FallCheck");
-		wallCheck = transform.Find("WallCheck");
-		rb = GetComponent<Rigidbody2D>();
+	void Start()
+	{
+		rb2d = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
 
+
+	void Update()
+	{
 		if (life <= 0) {
-			transform.GetComponent<Animator>().SetBool("IsDead", true);
-			StartCoroutine(DestroyEnemy());
+			Die();
+		}
+	}
+	
+	void FixedUpdate () {
+		CheckEndOfSpace();
+		// Non-zero vertical velocity means enemy was hit and shouldn't change speed
+		if (rb2d.velocity.y == 0)
+		{
+			Move();
+		}
+		
+	}
+
+
+	void Move()
+	{
+		float xSpeed = speed;
+		if (!isFacingRight)
+		{
+			xSpeed *= -1;
 		}
 
-		isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, 1 << LayerMask.NameToLayer("Default"));
-		isObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, turnLayerMask);
+		rb2d.velocity = new Vector2(xSpeed, rb2d.velocity.y);
+	}
 
-		if (!isHitted && life > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
+
+	void CheckEndOfSpace()
+	{
+		bool isAtTheEdge = !(Physics2D.OverlapCircle(fallCheck.position, .2f, groundMask));
+		bool isFacingObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, obstaclesMask);
+
+		if (isAtTheEdge || isFacingObstacle)
 		{
-			if (isPlat && !isObstacle && !isHitted)
-			{
-				if (facingRight)
-				{
-					rb.velocity = new Vector2(-speed, rb.velocity.y);
-				}
-				else
-				{
-					rb.velocity = new Vector2(speed, rb.velocity.y);
-				}
-			}
-			else
-			{
-				Flip();
-			}
+			Flip();
 		}
 	}
 
-	void Flip (){
-		// Switch the way the player is labelled as facing.
-		facingRight = !facingRight;
+
+	void Flip ()
+	{
+		isFacingRight = !isFacingRight;
 		
-		// Multiply the player's x local scale by -1.
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
 
+
 	public void ApplyDamage(float damage) {
 		if (!isInvincible) 
 		{
 			float direction = damage / Mathf.Abs(damage);
+			rb2d.velocity = Vector2.zero;
+			rb2d.AddForce(new Vector2(direction * 500f, 100f));
+
 			damage = Mathf.Abs(damage);
-			transform.GetComponent<Animator>().SetBool("Hit", true);
+			animator.SetBool("Hit", true);
 			life -= damage;
-			rb.velocity = Vector2.zero;
-			rb.AddForce(new Vector2(direction * 500f, 100f));
+			
 			StartCoroutine(HitTime());
 		}
 	}
+
 
 	void OnCollisionStay2D(Collision2D collision)
 	{
@@ -86,14 +100,21 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
+	
+	public void Die()
+	{
+		transform.GetComponent<Animator>().SetBool("IsDead", true);
+		StartCoroutine(DestroyEnemy());
+	}
+
+
 	IEnumerator HitTime()
 	{
-		isHitted = true;
 		isInvincible = true;
 		yield return new WaitForSeconds(0.1f);
-		isHitted = false;
 		isInvincible = false;
 	}
+
 
 	IEnumerator DestroyEnemy()
 	{
@@ -102,7 +123,7 @@ public class Enemy : MonoBehaviour {
 		capsule.offset = new Vector2(0f, -0.8f);
 		capsule.direction = CapsuleDirection2D.Horizontal;
 		yield return new WaitForSeconds(0.25f);
-		rb.velocity = new Vector2(0, rb.velocity.y);
+		rb2d.velocity = new Vector2(0, rb2d.velocity.y);
 		yield return new WaitForSeconds(3f);
 		Destroy(gameObject);
 	}

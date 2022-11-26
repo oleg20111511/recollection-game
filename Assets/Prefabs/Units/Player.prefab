@@ -322,7 +322,7 @@ MonoBehaviour:
   controller: {fileID: 114231493902538710}
   animator: {fileID: 95975118031919256}
   input: {fileID: 3067104997864447118}
-  jumpForce: 600
+  jumpForce: 800
   movementSmoothing: 0.05
   enableAirControl: 1
   groundLayer:
