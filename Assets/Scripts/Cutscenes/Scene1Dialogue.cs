@@ -7,8 +7,7 @@ using TMPro;
 public class Scene1Dialogue : CutsceneController
 {
     public Canvas dialogueBoxCanvas;
-    public TextMeshProUGUI textHolder;
-
+    public TextMeshProUGUI allyDialogueBoxText;
     private List<string> lines;
 
     private void Awake()
@@ -20,20 +19,35 @@ public class Scene1Dialogue : CutsceneController
     }
 
 
-    public override void Play()
+    public override void Begin()
     {
         dialogueBoxCanvas.enabled = true;
-        StartCoroutine(DrawText(lines[0]));
+        DrawNextLine();
     }
 
-    IEnumerator DrawText(string text)
+
+    private void Update()
     {
-        string displayedText = "";
-        textHolder.text = displayedText;
-        for (int i = 0; i < text.Length; i++) {
-            displayedText += text[i];
-            textHolder.text = displayedText;
-            yield return new WaitForSeconds(0.01f);
+        if (Input.GetMouseButtonDown(0) && isPlaying) {
+            DrawNextLine();
         }
+    }
+
+    private void DrawNextLine()
+    {
+        if (lines.Count > 0)
+        {
+            StartCoroutine(DrawTextLine(allyDialogueBoxText, lines[0]));
+            lines.RemoveAt(0);
+        } else {
+            End();
+        }
+    }
+
+    private void End()
+    {
+        dialogueBoxCanvas.enabled = false;
+        isPlaying = false;
+        GameController.instance.SetState(GameState.Gameplay);
     }
 }

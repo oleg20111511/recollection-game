@@ -351,7 +351,6 @@ MonoBehaviour:
   animator: {fileID: 95975118031919256}
   canAttack: 1
   isTimeToCheck: 0
-  cam: {fileID: 0}
 --- !u!1 &1393053470196254
 GameObject:
   m_ObjectHideFlags: 0
