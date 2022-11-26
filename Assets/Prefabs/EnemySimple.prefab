@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 10
-  speed: 5
+  speed: 3
   fallCheck: {fileID: 4850398340925330}
   wallCheck: {fileID: 4921565249646226}
   obstaclesMask:
