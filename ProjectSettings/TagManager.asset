@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - LevelStructureInvisible
-  - 
+  - Ground
   - 
   - 
   - 
@@ -50,4 +50,10 @@ TagManager:
     locked: 0
   - name: Units
     uniqueID: 4236905857
+    locked: 0
+  - name: UI
+    uniqueID: 953943471
+    locked: 0
+  - name: UI Text
+    uniqueID: 3708815257
     locked: 0
