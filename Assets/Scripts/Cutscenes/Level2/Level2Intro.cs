@@ -8,7 +8,9 @@ public class Level2Intro : CutsceneController
     public SpriteRenderer enemy;
     public Canvas dialogueBoxCanvas;
     public TextMeshProUGUI allyDialogueBoxText;
+    public Level2WalkAttempt nextCutscene;
     private List<string> lines;
+    private bool isInDialogue = false;
 
     private void Awake()
     {
@@ -35,13 +37,14 @@ public class Level2Intro : CutsceneController
     public void TimelineEnd()
     {
         dialogueBoxCanvas.enabled = true;
+        isInDialogue = true;
         DrawNextLine();
     }
 
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isPlaying) {
+        if (Input.GetMouseButtonDown(0) && isInDialogue) {
             DrawNextLine();
         }
     }
@@ -63,6 +66,7 @@ public class Level2Intro : CutsceneController
     {
         dialogueBoxCanvas.enabled = false;
         isPlaying = false;
+        nextCutscene.Setup();
         GameController.instance.SetState(GameState.Gameplay);
     }
 }
