@@ -37,8 +37,10 @@ public class PlayerMovement : MonoBehaviour {
 	void StunOnCutscene(GameState state) {
 		if (state == GameState.Cutscene) {
 			DisableMovement();
+			rb2d.simulated = false;
 		} else {
 			EnableMovement();
+			rb2d.simulated = true;
 		}
 	}
 
@@ -181,12 +183,12 @@ public class PlayerMovement : MonoBehaviour {
 		animator.SetBool("IsJumping", true);
 	}
 
+
 	public void OnLanding()
 	{
 		animator.SetBool("IsJumping", false);
 	}
 
-	
 
 	public void DisableMovement()
 	{

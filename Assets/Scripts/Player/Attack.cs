@@ -5,10 +5,13 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
 	public float dmgValue = 4;
+	public int manaCost = 5;
 	public GameObject throwableObject;
 	public Transform attackCheck;
+
 	private Rigidbody2D rb2d;
-	public Animator animator;
+	private Animator animator;
+	private CharacterController2D controller;
 	public bool canAttack = true;
 	public bool isTimeToCheck = false;
 	private PlayerInput input;
@@ -18,6 +21,8 @@ public class Attack : MonoBehaviour
 	{
 		rb2d = GetComponent<Rigidbody2D>();
 		input = GetComponent<PlayerInput>();
+		animator = GetComponent<Animator>();
+		controller = GetComponent<CharacterController2D>();
 	}
 
     // Update is called once per frame
@@ -25,20 +30,34 @@ public class Attack : MonoBehaviour
     {
 		if (input.meleeAttackInput && canAttack)
 		{
-			canAttack = false;
-			animator.SetBool("IsAttacking", true);
-			StartCoroutine(AttackCooldown());
+			MeleeAttack();
 		}
 
-		if (input.rangeAttackInput)
+		if (input.rangeAttackInput && controller.mana >= manaCost)
 		{
-			GameObject throwableWeapon = Instantiate(throwableObject, transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f), Quaternion.identity) as GameObject; 
-			Vector2 direction = new Vector2(transform.localScale.x, 0);
-			throwableWeapon.GetComponent<ThrowableWeapon>().direction = direction; 
-			throwableWeapon.name = "ThrowableWeapon";
-			throwableWeapon.SendMessage("StartMovement");
+			RangeAttack();
 		}
 	}
+
+	void  MeleeAttack()
+	{
+		canAttack = false;
+		animator.SetBool("IsAttacking", true);
+		StartCoroutine(AttackCooldown());
+	}
+
+
+	void RangeAttack()
+	{
+		GameObject throwableWeapon = Instantiate(throwableObject, transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f), Quaternion.identity) as GameObject; 
+		Vector2 direction = new Vector2(transform.localScale.x, 0);
+		throwableWeapon.GetComponent<ThrowableWeapon>().direction = direction; 
+		throwableWeapon.name = "ThrowableWeapon";
+		throwableWeapon.SendMessage("StartMovement");
+
+		controller.SetMana(controller.mana - manaCost);
+	}
+
 
 	IEnumerator AttackCooldown()
 	{

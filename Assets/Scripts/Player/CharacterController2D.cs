@@ -15,8 +15,14 @@ public class CharacterController2D : MonoBehaviour
 	private Attack attack;
 	public bool isFacingRight {get; private set;} = true;
 
+	public HealthBar healthBar;
+	public HealthBar manaBar;
 	public bool invincible = false;
-	public float life = 10f;
+	public float maxLife = 10f;
+	public int maxMana = 100;
+
+	public float life {get; private set;}
+	public int mana {get; private set;}
 
 	private void Awake()
 	{
@@ -24,6 +30,8 @@ public class CharacterController2D : MonoBehaviour
 		animator = GetComponent<Animator>();
 		movement = GetComponent<PlayerMovement>();
 		attack = GetComponent<Attack>();
+		SetLife(maxLife);
+		SetMana(maxMana);
 	}
 
 
@@ -47,7 +55,10 @@ public class CharacterController2D : MonoBehaviour
 		}
 
 		animator.SetBool("Hit", true);
+
 		life -= damage;
+		SetLife(life - damage);
+		
 		Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
 		rb2d.velocity = Vector2.zero;
 		rb2d.AddForce(damageDir * 10);
@@ -60,6 +71,20 @@ public class CharacterController2D : MonoBehaviour
 			StartCoroutine(Stun(0.25f));
 			StartCoroutine(MakeInvincible(1f));
 		}
+	}
+
+
+	public void SetLife(float newLife)
+	{
+		life = newLife;
+		healthBar.SetHealth(newLife, maxLife);
+	}
+
+
+	public void SetMana(int newMana)
+	{
+		mana = newMana;
+		manaBar.SetHealth(newMana, maxMana);
 	}
 
 
