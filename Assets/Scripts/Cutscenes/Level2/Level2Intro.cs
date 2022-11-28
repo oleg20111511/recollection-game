@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using TMPro;
+
 
 public class Level2Intro : CutsceneController
 {
@@ -9,6 +11,8 @@ public class Level2Intro : CutsceneController
     public Canvas dialogueBoxCanvas;
     public TextMeshProUGUI allyDialogueBoxText;
     public Level2WalkAttempt nextCutscene;
+
+    private PlayableDirector director;
     private List<string> lines;
     private bool isInDialogue = false;
 
@@ -21,10 +25,18 @@ public class Level2Intro : CutsceneController
     }
 
 
+    private void Start()
+    {
+        Play();
+    }
+
+
     public override void Begin()
     {
         enemy.sortingLayerName = "Default";
         GameController.instance.SetState(GameState.Cutscene);
+        director = GetComponent<PlayableDirector>();
+        director.Play();
     }
     
 

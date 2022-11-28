@@ -3829,7 +3829,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 8b783068d8528844cb4379905b7ff93e, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -3892,7 +3892,6 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: b1783af680afa4840b547a19d9fe3398, type: 2}
-    - {fileID: 11400000, guid: 62ed89c6e8dd13d4dbcd010b901f47bc, type: 2}
     - {fileID: 11400000, guid: 104566a9a1f3d7647a0914526fab5280, type: 2}
     m_Events:
     - m_PersistentCalls:
@@ -3900,20 +3899,6 @@ MonoBehaviour:
         - m_Target: {fileID: 1351262847}
           m_TargetAssemblyTypeName: Level2Intro, Assembly-CSharp
           m_MethodName: EnemyOutOfCartReceiver
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 1
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1351262847}
-          m_TargetAssemblyTypeName: CutsceneController, Assembly-CSharp
-          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5404,7 +5389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4418377588899642828, guid: a2ab536e2e14e1845b8d8c9887c86845, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6995676125356917744, guid: a2ab536e2e14e1845b8d8c9887c86845, type: 3}
       propertyPath: m_Name
@@ -5589,15 +5574,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8370386038584315453, guid: 44b882b89f50e4143becce14b2f30b60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.842856
+      value: -10.842946
       objectReference: {fileID: 0}
     - target: {fileID: 8370386038584315453, guid: 44b882b89f50e4143becce14b2f30b60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.090619996
+      value: 0.042889997
       objectReference: {fileID: 0}
     - target: {fileID: 8370386038584315453, guid: 44b882b89f50e4143becce14b2f30b60, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -9.92149
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b882b89f50e4143becce14b2f30b60, type: 3}

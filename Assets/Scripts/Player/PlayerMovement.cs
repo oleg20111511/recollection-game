@@ -28,9 +28,15 @@ public class PlayerMovement : MonoBehaviour {
 	private float limitFallSpeed = 25f;
 	private Vector3 velocity = Vector3.zero;
 
-	private void Awake() {
+	private void Awake()
+	{
 		rb2d = GetComponent<Rigidbody2D>();
-		GameController.OnGameStateChanged += StunOnCutscene;
+	}
+
+
+	private void Start()
+	{
+		GameController.instance.OnGameStateChanged += StunOnCutscene;
 	}
 
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance {get; private set;}
-    public static event System.Action<GameState> OnGameStateChanged;
+    public event System.Action<GameState> OnGameStateChanged;
     public GameState state {get; private set;}
     public PopupController popupController;
 

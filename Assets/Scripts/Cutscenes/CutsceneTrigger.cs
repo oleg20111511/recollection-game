@@ -12,6 +12,7 @@ public class CutsceneTrigger : MonoBehaviour
         {
             GameController.instance.SetState(GameState.Cutscene);
             cutscene.Play();
+            gameObject.SetActive(false);
         }
     }
 }
