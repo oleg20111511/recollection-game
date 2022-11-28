@@ -42,6 +42,6 @@ public class Level2WalkAttempt : CutsceneController
 
     public override void Begin()
     {
-        
+        director.Play();
     }
 }
