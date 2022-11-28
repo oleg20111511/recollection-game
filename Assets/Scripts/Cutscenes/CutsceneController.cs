@@ -16,6 +16,7 @@ public abstract class CutsceneController : MonoBehaviour
 
     public abstract void Begin();
 
+
     public IEnumerator DrawTextLine(TextMeshProUGUI textHolder, string text)
     {
         string displayedText = "";
@@ -25,5 +26,12 @@ public abstract class CutsceneController : MonoBehaviour
             textHolder.text = displayedText;
             yield return new WaitForSeconds(0.01f);
         }
+    }
+
+
+    
+    public void Terminate()
+    {
+        gameObject.SetActive(false);
     }
 }

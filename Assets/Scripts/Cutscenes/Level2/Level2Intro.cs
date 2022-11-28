@@ -68,5 +68,7 @@ public class Level2Intro : CutsceneController
         isPlaying = false;
         nextCutscene.Setup();
         GameController.instance.SetState(GameState.Gameplay);
+        GameController.instance.popupController.DisplayText("Something seems unusual. Try walking around to check your condition.");
+        Terminate();
     }
 }

@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 public class LevelEnd : MonoBehaviour
 {
     public string nextLevelName;
+    public bool active = true;
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && active)
         {
             SceneManager.LoadScene(nextLevelName);
         }

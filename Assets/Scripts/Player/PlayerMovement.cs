@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 	public LayerMask groundLayer;
 	public Transform groundCheck;
 	public Transform wallCheck;
-	public float runSpeed = 40f;
+	public float runSpeed = 10f;
 	public ParticleSystem particleJumpUp; // Trail particles
 	public ParticleSystem particleJumpDown; // Explosion particles
 
@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		animator.SetFloat("Speed", Mathf.Abs(input.xMovement));
 
-		Vector3 targetVelocity = new Vector2(input.xMovement * 10f, rb2d.velocity.y);
+		Vector3 targetVelocity = new Vector2(input.xMovement * runSpeed, rb2d.velocity.y);
 		// Smooth movement
 		rb2d.velocity = Vector3.SmoothDamp(rb2d.velocity, targetVelocity, ref velocity, movementSmoothing);
 		// rb2d.velocity = targetVelocity;

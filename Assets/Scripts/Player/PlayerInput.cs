@@ -8,13 +8,19 @@ public class PlayerInput : MonoBehaviour
     public bool jumpInput {get; private set;}
     public bool meleeAttackInput {get; private set;}
     public bool rangeAttackInput {get; private set;}
+    
+    private KeyCode moveLeftKey = KeyCode.A;
+    private KeyCode moveRightKey = KeyCode.D;
+    private KeyCode jumpKey = KeyCode.W;
+    private KeyCode meleeAttackKey = KeyCode.Space;
+    private KeyCode rangeAttackKey = KeyCode.F;
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        if (Input.GetKey(moveRightKey) && !Input.GetKey(moveLeftKey))
         {
             xMovement = 1;
-        } else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        } else if (Input.GetKey(moveLeftKey) && !Input.GetKey(moveRightKey))
         {
             xMovement = -1;
         } else
@@ -22,8 +28,28 @@ public class PlayerInput : MonoBehaviour
             xMovement = 0;
         }
 
-        jumpInput = Input.GetKeyDown(KeyCode.W);
-        meleeAttackInput = Input.GetKeyDown(KeyCode.Space);
-        rangeAttackInput = Input.GetKeyDown(KeyCode.F);
+        jumpInput = Input.GetKeyDown(jumpKey);
+        meleeAttackInput = Input.GetKeyDown(meleeAttackKey);
+        rangeAttackInput = Input.GetKeyDown(rangeAttackKey);
+    }
+
+
+    public void alterControls()
+    {
+        moveLeftKey = KeyCode.W;
+        moveRightKey = KeyCode.X;
+        jumpKey = KeyCode.S;
+        meleeAttackKey = KeyCode.O;
+        rangeAttackKey = KeyCode.L;
+    }
+
+
+    public void restoreControls()
+    {
+        moveLeftKey = KeyCode.A;
+        moveRightKey = KeyCode.D;
+        jumpKey = KeyCode.W;
+        meleeAttackKey = KeyCode.Space;
+        rangeAttackKey = KeyCode.F;
     }
 }

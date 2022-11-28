@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControlPrompts : MonoBehaviour
+public class UIController : MonoBehaviour
 {
-    public GameObject controlPromptsContainer;
+    public GameObject container;
 
     void Awake()
     {
@@ -14,9 +14,9 @@ public class PlayerControlPrompts : MonoBehaviour
     void HideInCutscene(GameState state)
     {
         if (state == GameState.Cutscene) {
-            controlPromptsContainer.SetActive(false);
+            container.SetActive(false);
         } else {
-            controlPromptsContainer.SetActive(true);
+            container.SetActive(true);
         }
     }
 }
