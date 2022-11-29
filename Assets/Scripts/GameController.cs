@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public event System.Action<GameState> OnGameStateChanged;
     public GameState state {get; private set;}
     public PopupController popupController;
+    public CoinProgress coinController;
 
     void Awake()
     {

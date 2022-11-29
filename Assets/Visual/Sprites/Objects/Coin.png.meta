@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eb4c32ae8c16ebe43b3ca2d7b9426400
+guid: ff262d0bf8661be43b7e5da1a5ed805e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 320
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,85 +105,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spike UP
+      name: Coin_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9720652e784ffa442bdab262dcf174b7
-      internalID: 2039576485
+      spriteID: c74f7d8cfb61cab4a82d70891814f163
+      internalID: -1853988424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spike RIGHT
+      name: Coin_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 320
         y: 0
-        width: 16
-        height: 16
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6251d1f85cf77cb4ca276c38453f45a9
-      internalID: 355138547
+      spriteID: c1567691309999944be39f8e6927731e
+      internalID: 490251197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spike DOWN
+      name: Coin_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 640
         y: 0
-        width: 16
-        height: 16
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 077e94105c69ea34bbc926254a7b4333
-      internalID: 902374374
+      spriteID: 8d233190e75691a48aeec3a5ea712b75
+      internalID: 2057370496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spike LEFT
+      name: Coin_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 960
         y: 0
-        width: 16
-        height: 16
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bcbe453feebf8847a7900c3af16717f
-      internalID: 36408475
+      spriteID: 3c8ee9d1c953868468702ce9be4b5005
+      internalID: -660260594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0944636893f43647bfa7b2918ae44e1
+      internalID: -466098784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_5
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0423328707ac331439d2e37e688c1c1e
+      internalID: 1570758785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_6
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9836d81a931754f860fa36069db526
+      internalID: -86989243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_7
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edceb9e6dcadfcb4cb62d00884efd510
+      internalID: -459276193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_8
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a3054ffd9cc0c489db971dd0191d8b
+      internalID: -937926319
       vertices: []
       indices: 
       edges: []
@@ -199,10 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Spike LEFT: 36408475
-      Spike RIGHT: 355138547
-      Spike DOWN: 902374374
-      Spike UP: 2039576485
+      Coin_5: 1570758785
+      Coin_7: -459276193
+      Coin_8: -937926319
+      Coin_0: -1853988424
+      Coin_6: -86989243
+      Coin_2: 2057370496
+      Coin_1: 490251197
+      Coin_3: -660260594
+      Coin_4: -466098784
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

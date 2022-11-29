@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour {
 			animator.SetBool("IsDoubleJumping", true);
 
 			rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-			rb2d.AddForce(new Vector2(0f, jumpForce / 1.2f));
+			rb2d.AddForce(new Vector2(0f, jumpForce * 0.9f));
 
 			doubleJumpAvailable = false;
 		}

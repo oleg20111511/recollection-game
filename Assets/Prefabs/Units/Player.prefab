@@ -295,7 +295,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
-  invincible: 0
+  wrongKnockback: 0
+  isInvincible: 0
   maxLife: 10
   maxMana: 100
 --- !u!114 &3067104997864447118
