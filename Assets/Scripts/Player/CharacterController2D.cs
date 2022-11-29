@@ -74,10 +74,32 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
+	public void RestoreLife(float amount)
+	{
+		float newLife = life + amount;
+		if (newLife > maxLife)
+		{
+			newLife = maxLife;
+		}
+		SetLife(newLife);
+	}
+
+
 	public void SetLife(float newLife)
 	{
 		life = newLife;
 		healthBar.SetHealth(newLife, maxLife);
+	}
+
+
+	public void RestoreMana(int amount)
+	{
+		int newMana = mana + amount;
+		if (newMana > maxMana)
+		{
+			newMana = maxMana;
+		}
+		SetMana(newMana);
 	}
 
 
@@ -88,7 +110,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	IEnumerator Stun(float time) 
+	public IEnumerator Stun(float time) 
 	{
 		movement.DisableMovement();
 		yield return new WaitForSeconds(time);
