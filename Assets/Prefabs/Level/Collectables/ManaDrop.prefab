@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0801cf9ca27346f4cbde7be3e274cc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restorationAmount: 20
+  restorationAmount: 5
 --- !u!95 &5492721028572520281
 Animator:
   serializedVersion: 4

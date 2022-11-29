@@ -8,6 +8,17 @@ public class HealthRestore : MonoBehaviour
     public float restorationAmount = 2.5f;
     public bool isFake = false;
     private static bool isExplained = false;
+    public bool disableExplanation = false;  // Editor doesn't support static assignment, so setting this to true on one instance is a way to set it true on all instances in start
+
+
+    private void Start()
+    {
+        if (disableExplanation)
+        {
+            isExplained = true;
+        }
+    }
+
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -18,7 +29,7 @@ public class HealthRestore : MonoBehaviour
             if (isFake && !isExplained)
             {
                 isExplained = true;
-                GameController.instance.popupController.DelayedText("Anomaly: hearts cause damage and spikes restore HP", 1f);
+                GameController.instance.popupController.DelayedText("Anomaly: hearts cause damage and spikes restore HP", 0.1f);
             }
 
             gameObject.SetActive(false);

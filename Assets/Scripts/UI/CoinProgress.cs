@@ -12,7 +12,7 @@ public class CoinProgress : MonoBehaviour
 
     public int coinsCollected {get; private set;} = 0;
 
-    private bool anomalyExplained = false;
+    public bool anomalyExplained = false;
 
     // Start is called before the first frame update
     void Start()

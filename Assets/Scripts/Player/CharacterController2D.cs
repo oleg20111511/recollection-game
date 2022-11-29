@@ -160,6 +160,8 @@ public class CharacterController2D : MonoBehaviour
 
 		yield return new WaitForSeconds(0.4f);
 		rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 	// Damage-taking related end
 	// ========================
