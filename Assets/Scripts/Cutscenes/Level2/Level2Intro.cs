@@ -68,7 +68,9 @@ public class Level2Intro : CutsceneController
         {
             StartCoroutine(DrawTextLine(allyDialogueBoxText, lines[0]));
             lines.RemoveAt(0);
-        } else {
+        }
+        else
+        {
             End();
         }
     }

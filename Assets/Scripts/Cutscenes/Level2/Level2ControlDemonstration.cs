@@ -47,7 +47,8 @@ public class Level2ControlDemonstration : CutsceneController
             if (state == CutsceneState.FirstDialogue)
             {
                 DrawFirstGroupLine();
-            } else if (state == CutsceneState.SecondDialogue)
+            }
+            else if (state == CutsceneState.SecondDialogue)
             {
                 DrawSecondGroupLine();
             }
@@ -70,7 +71,9 @@ public class Level2ControlDemonstration : CutsceneController
         {
             StartCoroutine(DrawTextLine(allyDialogueBoxText, lineGroup1[0]));
             lineGroup1.RemoveAt(0);
-        } else {
+        }
+        else
+        {
             StartTimeline();
         }
     }
@@ -97,7 +100,9 @@ public class Level2ControlDemonstration : CutsceneController
         {
             StartCoroutine(DrawTextLine(allyDialogueBoxText, lineGroup2[0]));
             lineGroup2.RemoveAt(0);
-        } else {
+        }
+        else
+        {
             End();
         }
     }

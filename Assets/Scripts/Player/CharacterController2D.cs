@@ -17,12 +17,14 @@ public class CharacterController2D : MonoBehaviour
 
 	public HealthBar healthBar;
 	public HealthBar manaBar;
-	public bool invincible = false;
+	public bool wrongKnockback = false;
+	public bool isInvincible = false;
 	public float maxLife = 10f;
 	public int maxMana = 100;
 
 	public float life {get; private set;}
 	public int mana {get; private set;}
+	public bool knockbackExplained {get; private set;} = false;
 
 	private void Awake()
 	{
@@ -47,33 +49,8 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void ApplyDamage(float damage, Vector3 position) 
-	{
-		if (invincible)
-		{
-			return;
-		}
-
-		animator.SetBool("Hit", true);
-
-		life -= damage;
-		SetLife(life - damage);
-		
-		Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
-		rb2d.velocity = Vector2.zero;
-		rb2d.AddForce(damageDir * 10);
-		if (life <= 0)
-		{
-			StartCoroutine(WaitToDead());
-		}
-		else
-		{
-			StartCoroutine(Stun(0.25f));
-			StartCoroutine(MakeInvincible(1f));
-		}
-	}
-
-
+	// ========================
+	// Life/mana related
 	public void RestoreLife(float amount)
 	{
 		float newLife = life + amount;
@@ -108,6 +85,54 @@ public class CharacterController2D : MonoBehaviour
 		mana = newMana;
 		manaBar.SetHealth(newMana, maxMana);
 	}
+	// Life/mana related end
+	// ========================
+
+
+	// ========================
+	// Damage-taking related
+	public void GetHit(float damage, Vector3 hitPosition)
+	{
+		if (!isInvincible)
+		{
+			ApplyDamage(damage);
+			Knockback(hitPosition, 600f);
+		}
+	}
+
+
+	public void ApplyDamage(float damage) 
+	{
+		if (isInvincible)
+		{
+			return;
+		}
+
+		animator.SetBool("Hit", true);
+
+		life -= damage;
+		SetLife(life - damage);
+
+		if (life <= 0)
+		{
+			StartCoroutine(WaitToDead());
+		}
+		else
+		{
+			StartCoroutine(Stun(0.25f));
+			StartCoroutine(MakeInvincible(1f));
+		}
+	}
+
+
+	public void Knockback(Vector3 hitPosition, float knockbackMultiplier)
+	{
+		Vector2 damageDir = Vector3.Normalize(transform.position - hitPosition);
+		damageDir.y = 0.4f;
+		
+		rb2d.velocity = Vector2.zero;
+		rb2d.AddForce(damageDir * knockbackMultiplier);
+	}
 
 
 	public IEnumerator Stun(float time) 
@@ -120,9 +145,9 @@ public class CharacterController2D : MonoBehaviour
 
 	IEnumerator MakeInvincible(float time) 
 	{
-		invincible = true;
+		isInvincible = true;
 		yield return new WaitForSeconds(time);
-		invincible = false;
+		isInvincible = false;
 	}
 
 
@@ -130,10 +155,21 @@ public class CharacterController2D : MonoBehaviour
 	{
 		animator.SetBool("IsDead", true);
 		movement.DisableMovement();
-		invincible = true;
+		isInvincible = true;
 		attack.enabled = false;
 
 		yield return new WaitForSeconds(0.4f);
 		rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+	}
+	// Damage-taking related end
+	// ========================
+
+
+	// ========================
+	// Story-related
+	public void ExplainKnockback()
+	{
+		knockbackExplained = true;
+		GameController.instance.popupController.DelayedText("Anomaly: attacking enemies knocks back your character instead of enemies", 0.25f);
 	}
 }

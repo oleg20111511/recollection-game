@@ -11,7 +11,7 @@ public class Traps : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            col.gameObject.GetComponent<CharacterController2D>().ApplyDamage(damage, transform.position);
+            col.gameObject.GetComponent<CharacterController2D>().GetHit(damage, transform.position);
             StartCoroutine(col.gameObject.GetComponent<CharacterController2D>().Stun(0.5f));
         }
         else if (col.gameObject.CompareTag("Enemy"))

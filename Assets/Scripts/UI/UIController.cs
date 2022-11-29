@@ -15,9 +15,12 @@ public class UIController : MonoBehaviour
     void HideInCutscene(GameState state)
     {
         // Debug.Log("Container:" + container + "; Instance: " + GameController.instance + "; State: " + state + "; Scene: " + SceneManager.GetActiveScene().name);
-        if (state == GameState.Cutscene) {
+        if (state == GameState.Cutscene)
+        {
             container.SetActive(false);
-        } else {
+        }
+        else
+        {
             container.SetActive(true);
         }
     }

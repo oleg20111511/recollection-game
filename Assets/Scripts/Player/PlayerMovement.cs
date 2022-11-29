@@ -44,7 +44,9 @@ public class PlayerMovement : MonoBehaviour {
 		if (state == GameState.Cutscene) {
 			DisableMovement();
 			rb2d.simulated = false;
-		} else {
+		}
+		else
+		{
 			EnableMovement();
 			rb2d.simulated = true;
 		}
@@ -120,7 +122,8 @@ public class PlayerMovement : MonoBehaviour {
 			if (state == PlayerMovementState.OnGround)
 			{
 				Jump();
-			} else if (state == PlayerMovementState.InAir && doubleJumpAvailable)
+			}
+			else if (state == PlayerMovementState.InAir && doubleJumpAvailable)
 			{
 				DoubleJump();
 			}

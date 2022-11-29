@@ -49,12 +49,21 @@ public class Attack : MonoBehaviour
 
 	void RangeAttack()
 	{
-		GameObject throwableWeapon = Instantiate(throwableObject, transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f), Quaternion.identity) as GameObject; 
-		Vector2 direction = new Vector2(transform.localScale.x, 0);
-		throwableWeapon.GetComponent<ThrowableWeapon>().direction = direction; 
-		throwableWeapon.name = "ThrowableWeapon";
-		throwableWeapon.SendMessage("StartMovement");
+		// Instantiate projectile
+		Vector3 projectileSpawnPoint = transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f);
+		GameObject projectile = Instantiate(throwableObject, projectileSpawnPoint, Quaternion.identity) as GameObject; 
+		ThrowableWeapon projectileController = projectile.GetComponent<ThrowableWeapon>();
+		
+		// Configure instance
+		projectile.name = "ThrowableWeapon";
 
+		Vector2 direction = new Vector2(transform.localScale.x, 0);
+		projectileController.direction = direction; 
+		projectileController.playerController = controller;
+
+		projectileController.StartMovement();
+
+		// Decrease player's mana
 		controller.SetMana(controller.mana - manaCost);
 	}
 
@@ -65,19 +74,35 @@ public class Attack : MonoBehaviour
 		canAttack = true;
 	}
 
+
 	public void DoDashDamage()
 	{
-		dmgValue = Mathf.Abs(dmgValue);
 		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 0.9f);
 		for (int i = 0; i < collidersEnemies.Length; i++)
 		{
 			if (collidersEnemies[i].gameObject.tag == "Enemy")
 			{
-				if (collidersEnemies[i].transform.position.x - transform.position.x < 0)
-				{
-					dmgValue = -dmgValue;
-				}
-				collidersEnemies[i].gameObject.SendMessage("ApplyDamage", dmgValue);
+				GameObject enemy = collidersEnemies[i].gameObject;
+				DamageEnemy(enemy);
+			}
+		}
+	}
+
+
+	public void DamageEnemy(GameObject enemy)
+	{
+		if (!controller.wrongKnockback)
+		{
+			enemy.GetComponent<Enemy>().GetHit(dmgValue, transform.position);
+		}
+		else
+		{
+			enemy.GetComponent<Enemy>().ApplyDamage(dmgValue);
+			controller.Knockback(enemy.transform.position, 1500f);
+
+			if (!controller.knockbackExplained)
+			{
+				controller.ExplainKnockback();
 			}
 		}
 	}

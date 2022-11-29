@@ -39,7 +39,9 @@ public class Scene1Dialogue : CutsceneController
         {
             StartCoroutine(DrawTextLine(allyDialogueBoxText, lines[0]));
             lines.RemoveAt(0);
-        } else {
+        }
+        else
+        {
             End();
         }
     }

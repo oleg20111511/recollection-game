@@ -76,19 +76,31 @@ public class Enemy : MonoBehaviour {
 	}
 
 
-	public void ApplyDamage(float damage) {
-		if (!isInvincible) 
+	public void GetHit(float damage, Vector3 hitPosition)
+	{
+		if (!isInvincible)
 		{
-			float direction = damage / Mathf.Abs(damage);
-			rb2d.velocity = Vector2.zero;
-			rb2d.AddForce(new Vector2(direction * 500f, 100f));
-
-			damage = Mathf.Abs(damage);
-			animator.SetBool("Hit", true);
-			life -= damage;
-			
-			StartCoroutine(HitTime());
+			ApplyDamage(damage);
+			Knockback(hitPosition, 600f);
 		}
+	}
+
+
+	public void ApplyDamage(float damage)
+	{
+		animator.SetBool("Hit", true);
+		life -= damage;
+		StartCoroutine(HitTime());
+	}
+
+
+	public void Knockback(Vector3 hitPosition, float knockbackMultiplier)
+	{
+		Vector2 damageDir = Vector3.Normalize(transform.position - hitPosition);
+		damageDir.y = 0.4f;
+		
+		rb2d.velocity = Vector2.zero;
+		rb2d.AddForce(damageDir * knockbackMultiplier);
 	}
 
 
@@ -96,7 +108,7 @@ public class Enemy : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player" && life > 0)
 		{
-			collision.gameObject.GetComponent<CharacterController2D>().ApplyDamage(2f, transform.position);
+			collision.gameObject.GetComponent<CharacterController2D>().GetHit(2f, transform.position);
 		}
 	}
 

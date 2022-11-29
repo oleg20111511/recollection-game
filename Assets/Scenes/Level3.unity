@@ -10167,6 +10167,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2007476002}
+    - target: {fileID: 114231493902538710, guid: a2636a4f0cbf6614eb736820e0df2a04, type: 3}
+      propertyPath: wrongKnockback
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114435281327171648, guid: a2636a4f0cbf6614eb736820e0df2a04, type: 3}
+      propertyPath: wrongKnockback
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 212971026275759962, guid: a2636a4f0cbf6614eb736820e0df2a04, type: 3}
       propertyPath: m_SortingLayer
       value: 2

@@ -15,7 +15,8 @@ public class FollowPoint : MonoBehaviour
             if (nextFollowPoint != null)
             {
                 nextFollowPoint.SetActive(true);
-            } else if (nextCutscene != null)
+            }
+            else if (nextCutscene != null)
             {
                 nextCutscene.Play();
             }

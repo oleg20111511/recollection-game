@@ -20,10 +20,12 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(moveRightKey) && !Input.GetKey(moveLeftKey))
         {
             xMovement = 1;
-        } else if (Input.GetKey(moveLeftKey) && !Input.GetKey(moveRightKey))
+        }
+        else if (Input.GetKey(moveLeftKey) && !Input.GetKey(moveRightKey))
         {
             xMovement = -1;
-        } else
+        }
+        else
         {
             xMovement = 0;
         }
