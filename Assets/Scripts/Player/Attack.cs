@@ -49,22 +49,7 @@ public class Attack : MonoBehaviour
 
 	void RangeAttack()
 	{
-		// Instantiate projectile
-		Vector3 projectileSpawnPoint = transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f);
-		GameObject projectile = Instantiate(throwableObject, projectileSpawnPoint, Quaternion.identity) as GameObject; 
-		ThrowableWeapon projectileController = projectile.GetComponent<ThrowableWeapon>();
-		
-		// Configure instance
-		projectile.name = "ThrowableWeapon";
-
-		Vector2 direction = new Vector2(transform.localScale.x, 0);
-		projectileController.direction = direction; 
-		projectileController.playerController = controller;
-
-		projectileController.StartMovement();
-
-		// Decrease player's mana
-		controller.SetMana(controller.mana - manaCost);
+		animator.SetBool("IsUsingMagic", true);
 	}
 
 
@@ -86,6 +71,27 @@ public class Attack : MonoBehaviour
 				DamageEnemy(enemy);
 			}
 		}
+	}
+
+
+	public void LaunchProjectile()
+	{
+		// Instantiate projectile
+		Vector3 projectileSpawnPoint = transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f);
+		GameObject projectile = Instantiate(throwableObject, projectileSpawnPoint, Quaternion.identity) as GameObject; 
+		ThrowableWeapon projectileController = projectile.GetComponent<ThrowableWeapon>();
+		
+		// Configure instance
+		projectile.name = "ThrowableWeapon";
+
+		Vector2 direction = new Vector2(transform.localScale.x, 0);
+		projectileController.direction = direction; 
+		projectileController.playerController = controller;
+
+		projectileController.StartMovement();
+
+		// Decrease player's mana
+		controller.SetMana(controller.mana - manaCost);
 	}
 
 

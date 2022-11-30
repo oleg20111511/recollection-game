@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
 	public Transform wallCheck;
 	public LayerMask obstaclesMask;
 	public LayerMask groundMask;
+	public bool canMove = true;
 
 	private Rigidbody2D rb2d;
 	private Animator animator;
@@ -44,6 +45,12 @@ public class Enemy : MonoBehaviour {
 
 	void Move()
 	{
+		if (!canMove)
+		{
+			return;
+		}
+
+		animator.SetInteger("AnimState", 2);
 		float xSpeed = speed;
 		if (!isFacingRight)
 		{
@@ -59,7 +66,7 @@ public class Enemy : MonoBehaviour {
 		bool isAtTheEdge = !(Physics2D.OverlapCircle(fallCheck.position, .2f, groundMask));
 		bool isFacingObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, obstaclesMask);
 
-		if (isAtTheEdge || isFacingObstacle)
+		if ((isAtTheEdge || isFacingObstacle) && rb2d.velocity.y == 0)
 		{
 			Flip();
 		}
@@ -88,7 +95,7 @@ public class Enemy : MonoBehaviour {
 
 	public void ApplyDamage(float damage)
 	{
-		animator.SetBool("Hit", true);
+		animator.SetTrigger("Hurt");
 		life -= damage;
 		StartCoroutine(HitTime());
 	}
@@ -109,13 +116,14 @@ public class Enemy : MonoBehaviour {
 		if (collision.gameObject.tag == "Player" && life > 0)
 		{
 			collision.gameObject.GetComponent<CharacterController2D>().GetHit(2f, transform.position);
+			// animator.SetTrigger("Attack");
 		}
 	}
 
 	
 	public void Die()
 	{
-		transform.GetComponent<Animator>().SetBool("IsDead", true);
+		animator.SetTrigger("Death");
 		StartCoroutine(DestroyEnemy());
 	}
 
@@ -130,6 +138,7 @@ public class Enemy : MonoBehaviour {
 
 	IEnumerator DestroyEnemy()
 	{
+		canMove = false;
 		CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
 		capsule.size = new Vector2(1f, 0.25f);
 		capsule.offset = new Vector2(0f, -0.8f);

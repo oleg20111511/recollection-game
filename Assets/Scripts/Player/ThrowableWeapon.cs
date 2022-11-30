@@ -13,6 +13,10 @@ public class ThrowableWeapon : MonoBehaviour
     public void StartMovement()
     {
 		GetComponent<Rigidbody2D>().velocity = direction * speed;
+		if (direction.x < 0)
+		{
+			transform.localScale = new Vector3(-1, 1, 1);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)

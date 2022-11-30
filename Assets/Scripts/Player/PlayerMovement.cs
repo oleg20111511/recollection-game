@@ -43,7 +43,8 @@ public class PlayerMovement : MonoBehaviour {
 	void StunOnCutscene(GameState state) {
 		if (state == GameState.Cutscene) {
 			DisableMovement();
-			rb2d.simulated = false;
+			rb2d.velocity = new Vector2(0, 0);
+			// rb2d.simulated = false;
 		}
 		else
 		{
