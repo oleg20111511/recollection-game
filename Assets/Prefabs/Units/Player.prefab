@@ -117,12 +117,12 @@ SpriteRenderer:
   m_SortingLayerID: -58061439
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb3d2659d19074b4597ced346bef58be, type: 3}
+  m_Sprite: {fileID: 349181174, guid: fb3d2659d19074b4597ced346bef58be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.9985716, y: 2.249375}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -297,7 +297,7 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   wrongKnockback: 0
   isInvincible: 0
-  maxLife: 10
+  maxLife: 30
   maxMana: 100
 --- !u!114 &3067104997864447118
 MonoBehaviour:
@@ -5234,7 +5234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568700092027370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.682, y: -0.4, z: 0}
+  m_LocalPosition: {x: 0.793, y: -0.344, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

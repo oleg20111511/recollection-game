@@ -12,8 +12,8 @@ public class PlayerInput : MonoBehaviour
     private KeyCode moveLeftKey = KeyCode.A;
     private KeyCode moveRightKey = KeyCode.D;
     private KeyCode jumpKey = KeyCode.W;
-    private KeyCode meleeAttackKey = KeyCode.Space;
-    private KeyCode rangeAttackKey = KeyCode.F;
+    private KeyCode meleeAttackKey = KeyCode.J;
+    private KeyCode rangeAttackKey = KeyCode.K;
 
     void Update()
     {
@@ -51,7 +51,7 @@ public class PlayerInput : MonoBehaviour
         moveLeftKey = KeyCode.A;
         moveRightKey = KeyCode.D;
         jumpKey = KeyCode.W;
-        meleeAttackKey = KeyCode.Space;
-        rangeAttackKey = KeyCode.F;
+        meleeAttackKey = KeyCode.J;
+        rangeAttackKey = KeyCode.K;
     }
 }

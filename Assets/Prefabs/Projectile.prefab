@@ -140,4 +140,4 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   hasHit: 0
   speed: 10
-  dmgValue: 2
+  dmgValue: 6

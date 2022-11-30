@@ -1591,6 +1591,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1456449524}
     m_Modifications:
+    - target: {fileID: 106215814810655188, guid: 2dce0b04871a21c48a070f3e3ad82b54, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5492721027787045195, guid: 2dce0b04871a21c48a070f3e3ad82b54, type: 3}
       propertyPath: m_Name
       value: ManaDrop
@@ -2054,6 +2058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakeSpike
       objectReference: {fileID: 0}
+    - target: {fileID: 8457787511842469637, guid: 23889b27f17fc7a4f9a57c561c3814be, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23889b27f17fc7a4f9a57c561c3814be, type: 3}
 --- !u!4 &1040541095 stripped
@@ -2412,7 +2420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8370386038584315453, guid: 44b882b89f50e4143becce14b2f30b60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.842011
+      value: -10.844538
       objectReference: {fileID: 0}
     - target: {fileID: 8370386038584315453, guid: 44b882b89f50e4143becce14b2f30b60, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14235,26 +14243,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2306709120040472527, guid: 8055055507d32cb4f8de43ea71d4da71, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 1911127483}
-    - target: {fileID: 2306709120040472527, guid: 8055055507d32cb4f8de43ea71d4da71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1911127482}
-    - target: {fileID: 2306709120040472527, guid: 8055055507d32cb4f8de43ea71d4da71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePopup
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883650857651330339, guid: 8055055507d32cb4f8de43ea71d4da71, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.3310547
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883650857651330339, guid: 8055055507d32cb4f8de43ea71d4da71, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.6489868
-      objectReference: {fileID: 0}
     - target: {fileID: 3883650858001856721, guid: 8055055507d32cb4f8de43ea71d4da71, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14358,17 +14346,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08ed3488f2f61594798bf1df762e5513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1911127483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7544994880404633952, guid: 8055055507d32cb4f8de43ea71d4da71, type: 3}
-  m_PrefabInstance: {fileID: 1911127481}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1939840235
@@ -14833,6 +14810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1024335440}
     m_Modifications:
+    - target: {fileID: 7132064233814367211, guid: 8beb44c7b929d7f4785412c86d5db39e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7132064233814367212, guid: 8beb44c7b929d7f4785412c86d5db39e, type: 3}
       propertyPath: m_Name
       value: MissingCoin
